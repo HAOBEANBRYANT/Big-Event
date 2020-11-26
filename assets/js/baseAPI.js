@@ -13,8 +13,6 @@ $.ajaxPrefilter(function (ajaxOpt) {
 
     // 为所有的ajax请求 添加comeplate 函数
     ajaxOpt.complete = function (res) {
-        console.log(res);
-
         if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！') {
             layer.msg(res.responseJSON.message, {
                 icon: 1,
@@ -23,7 +21,6 @@ $.ajaxPrefilter(function (ajaxOpt) {
                 //do something
                 // 清空token
                 localStorage.removeItem('token');
-                console.log('res');
                 // 跳转登陆页面
                 location = './login.html';
             });
